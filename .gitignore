@@ -16,6 +16,7 @@ project/plugins/project/
 build
 .gradle
 .cache
+cache
 
 # Windows Specific
 ~*
