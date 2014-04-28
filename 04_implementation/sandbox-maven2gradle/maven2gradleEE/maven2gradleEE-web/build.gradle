@@ -1,0 +1,8 @@
+
+apply plugin: 'war'
+
+jar.enabled = true
+description = 'maven2gradleEE-web'
+dependencies {
+    providedCompile group: 'javax', name: 'javaee-web-api', version:'7.0'
+}

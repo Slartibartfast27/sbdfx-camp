@@ -1,0 +1,6 @@
+
+description = 'maven2gradleEE-ear'
+dependencies {
+  compile project(':maven2gradleEE-ejb')
+  compile project(':maven2gradleEE-web')
+}

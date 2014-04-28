@@ -1,0 +1,8 @@
+rootProject.name = 'maven2gradleEE'
+include ':maven2gradleEE-ear'
+include ':maven2gradleEE-web'
+include ':maven2gradleEE-ejb'
+
+project(':maven2gradleEE-ear').projectDir = "$rootDir/maven2gradleEE-ear" as File
+project(':maven2gradleEE-web').projectDir = "$rootDir/maven2gradleEE-web" as File
+project(':maven2gradleEE-ejb').projectDir = "$rootDir/maven2gradleEE-ejb" as File
