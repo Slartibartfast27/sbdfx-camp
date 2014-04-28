@@ -13,9 +13,10 @@ import javax.ejb.LocalBean;
  */
 @Stateless
 @LocalBean
-public class NewSessionBean {
+public class FooSessionBean {
 
-    public void businessMethod() {
+    public String getSomeString() {
+        return "FooBar27";
     }
 
     // Add business logic below. (Right-click in editor and choose
