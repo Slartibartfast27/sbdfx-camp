@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.zuehlke.sbdfx.utils;
-
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,11 +38,11 @@ import org.apache.commons.lang3.StringUtils;
 public abstract class CampApplBase {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CampApplBase.class);
-    
-    protected static final Options OPTIONS = new Options();
-    
-    private static int exitCode = -1;
-    
+
+    protected final Options OPTIONS = new Options();
+
+    private int exitCode = -1;
+
     @SuppressWarnings("static-access")
     private static final Option O_CONFIG_FILE = OptionBuilder.withLongOpt("config") //$NON-NLS-1$
             .withDescription("config file for string options (keys are long option names). " //$NON-NLS-1$
@@ -52,33 +50,38 @@ public abstract class CampApplBase {
                     + "have less priority than command line args. (default: config.txt").hasArg(true) //$NON-NLS-1$
             .create("c"); //$NON-NLS-1$
 
-    
     @SuppressWarnings("static-access")
     private static final Option O_TIMEOUT_MINUTES = OptionBuilder
             .withLongOpt("timeout-minutes") //$NON-NLS-1$
             .withDescription(
                     "timeout for the whole application in minutes. If exceeded, the System will terminate unconditionally (default: 30 minutes).") //$NON-NLS-1$
             .hasArg(true).create("t");
-    
-    
-    private static CommandLine commandLine;
-    private static Exception applicationException;
-    private static int defaultTimeoutMinutes = 30;
-    static final Properties propertiesFromConfigFile = new Properties();
-    
-    private final static double MILLISECONDS_PER_MINUTE = 1000*60;
 
-    static {
-            LoggingInitializer.assertLoggingInitialized();
-            OPTIONS.addOption(O_CONFIG_FILE);
-            OPTIONS.addOption(O_TIMEOUT_MINUTES);
-    }
-    
-    public static void setDefaultTimeoutMinutes(final int defaultTimeoutMinutes) {
-        CampApplBase.defaultTimeoutMinutes = defaultTimeoutMinutes;
+    private CommandLine commandLine;
+    private Exception applicationException;
+    private int defaultTimeoutMinutes = 30;
+    final Properties propertiesFromConfigFile = new Properties();
+
+    private final static double MILLISECONDS_PER_MINUTE = 1000 * 60;
+
+    {
+        LoggingInitializer.assertLoggingInitialized();
+        OPTIONS.addOption(O_CONFIG_FILE);
+        OPTIONS.addOption(O_TIMEOUT_MINUTES);
     }
 
-    private static void startWatchdog() {
+    protected void mainWithoutSystemExit(final String[] args) {
+        final boolean argumentsParsedSuccessfully = parseAndApplyArgs(args);
+        if (argumentsParsedSuccessfully) {
+            performActions();
+        }
+    }
+
+    public void setDefaultTimeoutMinutes(final int defaultTimeoutMinutes) {
+        this.defaultTimeoutMinutes = defaultTimeoutMinutes;
+    }
+
+    private void startWatchdog() {
         final double timeoutMinutes = Double.parseDouble(getOptionValue(O_TIMEOUT_MINUTES,
                 String.valueOf(defaultTimeoutMinutes)));
         TimeoutWatchdog.watchJVM((long) (timeoutMinutes * MILLISECONDS_PER_MINUTE));
@@ -106,9 +109,9 @@ public abstract class CampApplBase {
 
     /**
      * @return the {@link Exception} thrown by the application, typically
-     *         causing an exit code of -1
+     * causing an exit code of -1
      */
-    public static Exception getApplicationException() {
+    public Exception getApplicationException() {
         return applicationException;
     }
 
@@ -124,7 +127,7 @@ public abstract class CampApplBase {
         }
     }
 
-    private static void parseConfigFile() throws FileNotFoundException, IOException {
+    private void parseConfigFile() throws FileNotFoundException, IOException {
         final String configFileLocation = getOptionValue(O_CONFIG_FILE, "config.txt").trim(); //$NON-NLS-1$
         final File configFile = new File(configFileLocation);
         if (configFile.exists()) {
@@ -141,7 +144,7 @@ public abstract class CampApplBase {
 
     protected abstract void doPerformActions() throws Exception;
 
-    protected static List<String> getOptionValues(final Option option) {
+    protected List<String> getOptionValues(final Option option) {
         final String[] optionValues = commandLine.getOptionValues(option.getLongOpt());
         if (optionValues == null) {
             return Collections.emptyList();
@@ -164,15 +167,15 @@ public abstract class CampApplBase {
         // additional options.
     }
 
-    protected static String getOptionValue(final Option option) {
+    protected String getOptionValue(final Option option) {
         return getOptionValue(option, null);
     }
 
-    protected static boolean hasOption(final Option option) {
+    protected boolean hasOption(final Option option) {
         return commandLine.hasOption(option.getLongOpt());
     }
 
-    protected static String getOptionValue(final Option option, final String defaultValue) {
+    protected String getOptionValue(final Option option, final String defaultValue) {
 
         String result = commandLine.getOptionValue(option.getLongOpt(), "").trim(); //$NON-NLS-1$
         if (result.length() > 0) {
@@ -190,11 +193,11 @@ public abstract class CampApplBase {
         throw new IllegalArgumentException("Missing value for required option " + longOpt); //$NON-NLS-1$
     }
 
-    protected static boolean isOptionPresent(final Option option) {
+    protected boolean isOptionPresent(final Option option) {
         return commandLine.hasOption(option.getLongOpt());
     }
 
-    protected static Long getOptionValueAsLong(final Option option, final Long defaultValue) {
+    protected Long getOptionValueAsLong(final Option option, final Long defaultValue) {
         final String optionValueString = getOptionValue(option, defaultValue != null ? String.valueOf(defaultValue)
                 : ""); //$NON-NLS-1$
         if (StringUtils.isNotBlank(optionValueString)) {
@@ -209,7 +212,7 @@ public abstract class CampApplBase {
         }
     }
 
-    protected static File getOptionValueAsFile(final Option option, final String defaultValue, final boolean forceExists) {
+    protected File getOptionValueAsFile(final Option option, final String defaultValue, final boolean forceExists) {
         final String optionValueString = getOptionValue(option, defaultValue != null ? String.valueOf(defaultValue)
                 : ""); //$NON-NLS-1$
         File result = null;
@@ -227,17 +230,17 @@ public abstract class CampApplBase {
         return result;
     }
 
-    private static void printUsage() {
+    private void printUsage() {
         final HelpFormatter formatter = new HelpFormatter();
         formatter.setWidth(120);
         formatter.printHelp("\n", OPTIONS); //$NON-NLS-1$
     }
 
-    public static void setExitCode(final int exitCode) {
-        CampApplBase.exitCode = exitCode;
+    public void setExitCode(final int exitCode) {
+        this.exitCode = exitCode;
     }
 
-    public static int getExitCode() {
+    public int getExitCode() {
         return exitCode;
     }
 
