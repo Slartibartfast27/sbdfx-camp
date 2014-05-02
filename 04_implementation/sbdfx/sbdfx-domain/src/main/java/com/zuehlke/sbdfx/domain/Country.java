@@ -5,11 +5,9 @@
  */
 package com.zuehlke.sbdfx.domain;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
- *
+ * 
  * @author cbu
  */
 public class Country {
@@ -19,16 +17,20 @@ public class Country {
     private String isoCode;
     private String name;
 
-    public Country(String isoCode, String name) {
+    public Country(final String isoCode, final String name) {
         this.isoCode = isoCode;
         this.name = name;
+    }
+
+    public Country(final String isoCode) {
+        this.isoCode = isoCode;
     }
 
     public String getIsoCode() {
         return isoCode;
     }
 
-    public void setIsoCode(String isoCode) {
+    public void setIsoCode(final String isoCode) {
         this.isoCode = isoCode;
     }
 
@@ -36,7 +38,7 @@ public class Country {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 

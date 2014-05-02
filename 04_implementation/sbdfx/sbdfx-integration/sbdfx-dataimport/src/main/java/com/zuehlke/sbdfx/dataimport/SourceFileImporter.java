@@ -2,11 +2,18 @@ package com.zuehlke.sbdfx.dataimport;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import org.apache.commons.io.FilenameUtils;
@@ -14,11 +21,23 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.collect.Lists;
+import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
+import com.zuehlke.sbdfx.dataaccess.impl1.DefaultCitiesDao;
+import com.zuehlke.sbdfx.domain.City;
+import com.zuehlke.sbdfx.domain.Country;
+import com.zuehlke.sbdfx.domain.FeatureClass;
+import com.zuehlke.sbdfx.domain.FeatureCode;
+
 public class SourceFileImporter {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(SourceFileImporter.class);
 
-    public void importFile(final File srcFile) throws ZipException, IOException {
+    private final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+
+    private final CitiesDao dao = new DefaultCitiesDao();
+
+    public void importFile(final File srcFile) throws Exception {
         final ZipFile zipFile = new ZipFile(srcFile);
         InputStream inputStream = null;
         try {
@@ -58,10 +77,84 @@ public class SourceFileImporter {
      *         timezone          : the timezone id (see file timeZone.txt) varchar(40)
      *         modification date : date of last modification in yyyy-MM-dd format
      * </pre>
+     * 
+     * @throws ParseException
      */
-    private void putLineInDatabase(final String line) {
+    private void putLineInDatabase(final String line) throws ParseException {
         LOGGER.info("Processing Line {}", line);
+        final String[] split = line.split("\\t");
+        final City city = new City();
+        int pos = 0;
+        city.setGeonameid(Integer.parseInt(split[pos++]));
+        city.setName(split[pos++]);
+        city.setAsciiName(split[pos++]);
+        city.setAlternatenames(parseList(split[pos++]));
+        city.setLatitude(Double.parseDouble(split[pos++]));
+        city.setLongitude(Double.parseDouble(split[pos++]));
+        city.setFeatureClass(parseFeatureClass(split[pos++]));
+        city.setFeatureCode(parseFeatureCode(split[pos++]));
+        city.setCountry(parseCountry(split[pos++]));
+        city.setAlternateCountryCodes(parseAlternateCountries(split[pos++]));
+        city.setAdmin1Code(split[pos++]);
+        city.setAdmin2Code(split[pos++]);
+        city.setAdmin3Code(split[pos++]);
+        city.setAdmin4Code(split[pos++]);
+        city.setPopulation(Long.parseLong(split[pos++]));
+        city.setElevation(parseInt(split[pos++]));
+        city.setDem(split[pos++]);
+        city.setTimezone(split[pos++]);
+        city.setModificationDate(parseDate(split[pos++]));
 
+    }
+
+    private Integer parseInt(final String string) {
+        if (string.length() == 0) {
+            return null;
+        }
+        return Integer.parseInt(string);
+    }
+
+    private List<Country> parseAlternateCountries(final String string) {
+        if (string.length() == 0) {
+            return Collections.emptyList();
+        }
+        if (string.length() == 2) {
+            return Collections.singletonList(parseCountry(string));
+        }
+        List<Country> result = Lists.newArrayList();
+        final String[] split = string.split(",");
+        for (String isoCode : split) {
+            result.add(parseCountry(isoCode));
+        }
+        
+        return result;
+    }
+
+    private Calendar parseDate(final String string) throws ParseException {
+        final Date parsed = DATE_FORMAT.parse(string);
+        final GregorianCalendar result = new GregorianCalendar();
+        result.setTime(parsed);
+        return result;
+    }
+
+    private Country parseCountry(final String isoCode) {
+        return dao.getOrCreateCountry(isoCode);
+    }
+
+    private FeatureCode parseFeatureCode(final String string) {
+        return dao.getOrCreateFeatureCode(string);
+    }
+
+    private FeatureClass parseFeatureClass(final String string) {
+        return dao.getOrCreateFeatureClass(string);
+    }
+
+    private List<String> parseList(final String string) {
+        if (string.length() == 0) {
+            return Collections.emptyList();
+        }
+        final String[] split = string.split(",");
+        return Arrays.asList(split);
     }
 
 }

@@ -7,6 +7,10 @@
 package com.zuehlke.sbdfx.dataaccess.api;
 
 import com.zuehlke.sbdfx.domain.City;
+import com.zuehlke.sbdfx.domain.Country;
+import com.zuehlke.sbdfx.domain.FeatureClass;
+import com.zuehlke.sbdfx.domain.FeatureCode;
+
 import javax.ejb.Local;
 
 /**
@@ -16,5 +20,11 @@ import javax.ejb.Local;
 @Local
 public interface CitiesDao {
     
-    public City findCity(String countryIsoCode, String zip);
+    City findZuerich();
+
+    FeatureClass getOrCreateFeatureClass(String id);
+
+    FeatureCode getOrCreateFeatureCode(String id);
+
+    Country getOrCreateCountry(String isoCode);
 }

@@ -5,15 +5,15 @@
  */
 package com.zuehlke.sbdfx.transport;
 
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
 import com.zuehlke.sbdfx.biz.api.CitiesService;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
 import com.zuehlke.sbdfx.domain.City;
-import com.zuehlke.sbdfx.domain.IsoCode;
-import javax.ejb.EJB;
-import javax.ws.rs.Path;
-import javax.ws.rs.GET;
-import javax.enterprise.context.RequestScoped;
-import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -33,7 +33,7 @@ public class CitiesResource extends BaseResource {
     @GET
     @Path("Zuerich")
     public Response findZuerich() {
-        City result = dao.findCity(IsoCode.SWITZERLAND, "8000");
+        City result = dao.findZuerich();
         return ok(result);
     }
 
