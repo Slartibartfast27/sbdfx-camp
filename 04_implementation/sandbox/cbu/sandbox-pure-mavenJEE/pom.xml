@@ -7,6 +7,8 @@
   <packaging>pom</packaging>
   <name>sandbox-pure-mavenJEE</name>
   <modules>
+    <module>sandbox-pure-mavenJEE-model</module>
+	<module>sandbox-pure-mavenJEE-transport</module>
     <module>sandbox-pure-mavenJEE-ear</module>
     <module>sandbox-pure-mavenJEE-web</module>
     <module>sandbox-pure-mavenJEE-ejb</module>

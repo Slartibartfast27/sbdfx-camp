@@ -20,3 +20,5 @@ cache
 
 # Windows Specific
 ~*
+/04_implementation/sandbox/cbu/HelloWorldRest/nbproject/private/
+/04_implementation/sandbox/cbu/HelloWorldRest/dist/

@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany;
+package com.mycompany.biz;
 
+import com.mycompany.model.Person;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 
@@ -13,12 +14,15 @@ import javax.ejb.LocalBean;
  */
 @Stateless
 @LocalBean
-public class NewSessionBean {
+public class MySessionBean {
 
-    public void businessMethod() {
+    public Person getPerson() {
+        Person p = new Person();
+        p.setFirstName("Alistair");
+        p.setLastName("Miller");
+        return p;
     }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-
 }
