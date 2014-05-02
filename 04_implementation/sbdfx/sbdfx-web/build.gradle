@@ -1,0 +1,11 @@
+
+apply plugin: 'war'
+
+jar.enabled = true
+description = 'sbdfx-web'
+dependencies {
+  compile project(':sbdfx-biz:sbdfx-biz-impl')
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.3.3'
+    compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version:'2.3.3'
+    providedCompile group: 'javax', name: 'javaee-web-api', version:'7.0'
+}

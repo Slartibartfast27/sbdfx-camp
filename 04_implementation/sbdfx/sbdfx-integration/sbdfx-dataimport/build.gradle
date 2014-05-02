@@ -1,0 +1,7 @@
+
+description = ''
+dependencies {
+  compile project(':sbdfx-dataaccess:sbdfx-dataaccess-impl1')
+    compile group: 'httpunit', name: 'httpunit', version:'1.7'
+    compile group: 'rhino', name: 'js', version:'1.7R2'
+}
