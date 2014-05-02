@@ -9,7 +9,6 @@
   <modules>
     <module>sbdfx-ear</module>
     <module>sbdfx-web</module>
-    <module>sbdfx-biz</module>
     <module>sbdfx-ui</module>
   </modules>
 </project>
