@@ -14,7 +14,8 @@
         <module>sbdfx-dataaccess</module>
         <module>sbdfx-domain</module>
         <module>sbdfx-integration</module>
-    </modules>
+    <module>sbdfx-utils</module>
+  </modules>
   
     <!-- Properties -->
     <properties>
