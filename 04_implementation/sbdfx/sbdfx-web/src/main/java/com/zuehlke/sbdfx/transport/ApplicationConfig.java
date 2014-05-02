@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.zuehlke.sbdfx.transport.BaseResource.class);
         resources.add(com.zuehlke.sbdfx.transport.CitiesResource.class);
+        resources.add(com.zuehlke.sbdfx.transport.PingResource.class);
     }
     
 }
