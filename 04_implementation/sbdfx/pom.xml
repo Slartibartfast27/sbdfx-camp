@@ -10,5 +10,9 @@
     <module>sbdfx-ear</module>
     <module>sbdfx-web</module>
     <module>sbdfx-ui</module>
+    <module>sbdfx-biz</module>
+    <module>sbdfx-dataaccess</module>
+    <module>sbdfx-dataimport</module>
+    <module>sbdfx-domain</module>
   </modules>
 </project>
