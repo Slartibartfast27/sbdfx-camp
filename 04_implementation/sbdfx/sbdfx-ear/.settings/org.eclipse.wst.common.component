@@ -2,6 +2,9 @@
     <wb-module deploy-name="sbdfx-ear-1.0-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="sbdfx-biz-1.0-SNAPSHOT.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/mycompany/sbdfx-biz/1.0-SNAPSHOT/sbdfx-biz-1.0-SNAPSHOT.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="sbdfx-web-1.0-SNAPSHOT.war" deploy-path="/" handle="module:/resource/sbdfx-web/sbdfx-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
