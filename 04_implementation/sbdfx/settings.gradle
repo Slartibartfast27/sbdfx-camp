@@ -1,0 +1,28 @@
+rootProject.name = 'sbdfx'
+include ':sbdfx-ear'
+include ':sbdfx-web'
+// include ':sbdfx-ui'
+include ':sbdfx-biz:sbdfx-biz-api'
+include ':sbdfx-biz:sbdfx-biz-impl'
+include ':sbdfx-biz'
+include ':sbdfx-dataaccess:sbdfx-dataaccess-api'
+include ':sbdfx-dataaccess:sbdfx-dataaccess-impl1'
+include ':sbdfx-dataaccess'
+include ':sbdfx-domain'
+include ':sbdfx-integration:sbdfx-dataimport'
+include ':sbdfx-integration'
+include ':sbdfx-utils'
+
+project(':sbdfx-ear').projectDir = "$rootDir/sbdfx-ear" as File
+project(':sbdfx-web').projectDir = "$rootDir/sbdfx-web" as File
+// project(':sbdfx-ui').projectDir = "$rootDir/sbdfx-ui" as File
+project(':sbdfx-biz:sbdfx-biz-api').projectDir = "$rootDir/sbdfx-biz/sbdfx-biz-api" as File
+project(':sbdfx-biz:sbdfx-biz-impl').projectDir = "$rootDir/sbdfx-biz/sbdfx-biz-impl" as File
+project(':sbdfx-biz').projectDir = "$rootDir/sbdfx-biz" as File
+project(':sbdfx-dataaccess:sbdfx-dataaccess-api').projectDir = "$rootDir/sbdfx-dataaccess/sbdfx-dataaccess-api" as File
+project(':sbdfx-dataaccess:sbdfx-dataaccess-impl1').projectDir = "$rootDir/sbdfx-dataaccess/sbdfx-dataaccess-impl1" as File
+project(':sbdfx-dataaccess').projectDir = "$rootDir/sbdfx-dataaccess" as File
+project(':sbdfx-domain').projectDir = "$rootDir/sbdfx-domain" as File
+project(':sbdfx-integration:sbdfx-dataimport').projectDir = "$rootDir/sbdfx-integration/sbdfx-dataimport" as File
+project(':sbdfx-integration').projectDir = "$rootDir/sbdfx-integration" as File
+project(':sbdfx-utils').projectDir = "$rootDir/sbdfx-utils" as File

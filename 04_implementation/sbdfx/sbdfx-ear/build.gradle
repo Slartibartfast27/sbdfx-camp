@@ -1,0 +1,6 @@
+
+description = 'sbdfx-ear'
+dependencies {
+  compile project(':sbdfx-biz')
+  compile project(':sbdfx-web')
+}

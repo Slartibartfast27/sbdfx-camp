@@ -1,0 +1,38 @@
+
+apply plugin: 'war'
+
+jar.enabled = true
+description = 'sbdfx-web'
+dependencies {
+  compile project(':sbdfx-biz:sbdfx-biz-impl')
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.3.3'
+    compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version:'2.3.3'
+    providedCompile group: 'javax', name: 'javaee-web-api', version:'7.0'
+}
+
+/**
+* Taken from http://sufficientlysecure.org/index.php/2013/08/03/gradle-task-for-deploying-to-glassfish/comment-page-1/
+* 
+*  ~/.gradle/gradle.properties:
+*  glassfishHome=/path/to/glassfish_home
+*
+*  or in Netbeans, right click project, Properties, Manage Build in Tasks, Run
+*  Add line to Arguments: -Dorg.gradle.project.glassfishHome=/path/to/glassfish_home
+*
+*  For more information about Exec tasks see
+*  http://www.gradle.org/docs/current/dsl/org.gradle.api.tasks.Exec.html
+*/
+task deployToGlassfish(dependsOn: 'war', type:Exec) {
+  workingDir "${glassfishHome}${File.separator}bin"
+ 
+  if (System.properties['os.name'].toLowerCase().contains('windows')) {
+    commandLine 'cmd', '/c', 'asadmin.bat'
+  } else {
+    commandLine "./asadmin"
+  }
+ 
+  args "deploy", "--force=true", "${war.archivePath}"
+}
+
+// TODO: Check cargo plugin for deployment:
+// http://stackoverflow.com/questions/20108016/how-to-remotely-deploy-war-file-to-remote-glassfish
