@@ -21,7 +21,7 @@ import com.zuehlke.sbdfx.utils.CampApplBase;
  * @author cbu
  */
 public class CitiesImporter extends CampApplBase {
-
+ 
     private static final File TARGET_FOLDER = new File("build/geonames-dump");
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CampApplBase.class);

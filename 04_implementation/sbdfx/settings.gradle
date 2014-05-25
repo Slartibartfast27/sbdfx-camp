@@ -1,4 +1,5 @@
 rootProject.name = 'sbdfx'
+
 include ':sbdfx-ear'
 include ':sbdfx-web'
 // include ':sbdfx-ui'
