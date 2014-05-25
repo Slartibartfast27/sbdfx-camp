@@ -33,7 +33,7 @@ public class DefaultCitiesDao implements CitiesDao {
         final City zuerich = new City();
         zuerich.setCountry(Country.SWITZERLAND);
         zuerich.setName("Zuerich");
-        zuerich.setPopulation(383_708);
+        zuerich.setPopulation(383_707);
         return zuerich;
     }
 

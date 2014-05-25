@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
+	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER" exported="true"/>
 	<classpathentry kind="src" path="/sbdfx-biz" exported="true"/>
 	<classpathentry kind="src" path="/sbdfx-web" exported="true"/>
 	<classpathentry sourcepath="C:/cbu/.m2/repository/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7-sources.jar" kind="lib" path="C:/cbu/.m2/repository/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar" exported="true"/>
