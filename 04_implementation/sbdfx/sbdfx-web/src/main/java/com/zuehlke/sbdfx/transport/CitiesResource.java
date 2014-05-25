@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 import com.zuehlke.sbdfx.biz.api.CitiesService;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
 import com.zuehlke.sbdfx.domain.City;
+import com.zuehlke.sbdfx.domain.TestScalaDomainObject;
 
 /**
  * REST Web Service
@@ -34,6 +35,13 @@ public class CitiesResource extends BaseResource {
     @Path("Zuerich")
     public Response findZuerich() {
         City result = dao.findZuerich();
+        return ok(result);
+    }
+
+    @GET
+    @Path("ScalaTest")
+    public Response getScalaTestObject() {
+        TestScalaDomainObject result = new TestScalaDomainObject(42, "foo");
         return ok(result);
     }
 
