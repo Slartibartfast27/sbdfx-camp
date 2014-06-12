@@ -1,6 +1,12 @@
 *.class
 *.log
 
+# eclipse specific files
+.classpath
+.project
+.settings
+
+
 # sbt specific
 dist/*
 target/
