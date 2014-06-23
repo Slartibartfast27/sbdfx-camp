@@ -1,6 +1,8 @@
 *.class
 *.log
 
+.vagrant
+
 # eclipse specific files
 .classpath
 .project
