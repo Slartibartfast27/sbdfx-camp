@@ -6,7 +6,7 @@ class ambari_agent ($ownhostname, $serverhostname) {
 
   # Ambari Repo
   exec { 'get-ambari-agent-repo':
-    command => "wget http://public-repo-1.hortonworks.com/ambari/centos6/1.x/updates/1.6.0/ambari.repo",
+    command => "wget http://public-repo-1.hortonworks.com/ambari/centos6/1.x/updates/1.4.4.23/ambari.repo",
     cwd     => '/etc/yum.repos.d/',
     creates => '/etc/yum.repos.d/ambari.repo',
     user    => root
@@ -37,4 +37,6 @@ class ambari_agent ($ownhostname, $serverhostname) {
     require => [Package[ambari-agent], Exec[hostname], File_line[ambari-agent-ini-hostname]],
     onlyif  => 'ambari-agent status | grep "not running"'
   }
+  
+  
 }
