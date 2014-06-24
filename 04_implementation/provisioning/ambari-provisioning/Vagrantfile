@@ -50,7 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :four do |four| 
     four.vm.hostname = "four.cluster"
-    four.vm.network :private_network, ip: "192.168.66.103"
+    four.vm.network :private_network, ip: "192.168.66.104"
     four.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", 8192]
     end
@@ -64,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :five do |five| 
     five.vm.hostname = "five.cluster"
-    five.vm.network :private_network, ip: "192.168.66.103"
+    five.vm.network :private_network, ip: "192.168.66.105"
     five.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", 8192]
     end

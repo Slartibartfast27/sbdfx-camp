@@ -27,7 +27,7 @@ class etchosts ($ownhostname) {
   host { 'host_five':
     name  => 'five.cluster',
     alias => ['five', 'five.cluster'],
-    ip    => '192.168.66.103'
+    ip    => '192.168.66.105'
   }
 
   file { 'agent_hostname':
