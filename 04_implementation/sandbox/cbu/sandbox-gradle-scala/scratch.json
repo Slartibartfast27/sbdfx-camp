@@ -1,0 +1,27 @@
+{
+	"serverUsed": "localhost:27017",
+	"db": "mydb",
+	"collections": 3,
+	"objects": 432129,
+	"avgObjSize": 879.0857544853504,
+	"dataSize": 379878448,
+	"storageSize": 460910592,
+	"numExtents": 17,
+	"indexes": 1,
+	"indexSize": 14030016,
+	"fileSize": 1006632960,
+	"nsSizeMB": 16,
+	"dataFileVersion": 
+	{
+		"major": 4,
+		"minor": 5
+	},
+
+	"extentFreeList": 
+	{
+		"num": 0,
+		"totalSize": 0
+	},
+
+	"ok": 1.0
+}

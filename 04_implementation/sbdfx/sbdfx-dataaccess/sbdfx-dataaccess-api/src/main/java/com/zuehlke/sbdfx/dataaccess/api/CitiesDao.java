@@ -6,6 +6,8 @@
 
 package com.zuehlke.sbdfx.dataaccess.api;
 
+import java.util.Collection;
+
 import com.zuehlke.sbdfx.domain.City;
 import com.zuehlke.sbdfx.domain.Country;
 import com.zuehlke.sbdfx.domain.FeatureClass;
@@ -27,4 +29,14 @@ public interface CitiesDao {
     FeatureCode getOrCreateFeatureCode(String id);
 
     Country getOrCreateCountry(String isoCode);
+
+    void persistCity(City city);
+
+    void clear();
+
+    City findByGeoNameId(int geonameid);
+
+    Collection<City> findByArea( FindByAreaRequest req);
+
+    void printStatistics();
 }

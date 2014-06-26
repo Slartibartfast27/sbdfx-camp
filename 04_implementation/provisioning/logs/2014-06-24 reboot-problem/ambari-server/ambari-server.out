@@ -1,0 +1,114 @@
+[EL Info]: 2014-06-24 16:31:10.201--ServerSession(1563716086)--EclipseLink, version: Eclipse Persistence Services - 2.4.0.v20120608-r11652
+[EL Warning]: metadata: 2014-06-24 16:31:10.488--ServerSession(1563716086)--Reverting the lazy setting on the OneToOne or ManyToOne attribute [executionCommand] for the entity class [class org.apache.ambari.server.orm.entities.HostRoleCommandEntity] since weaving was not enabled or did not occur.
+[EL Info]: connection: 2014-06-24 16:31:11.023--ServerSession(1563716086)--file:/usr/lib/ambari-server/ambari-server-1.6.0.46.jar_ambari-server_url=jdbc:postgresql://localhost/ambari_user=ambari login successful
+Jun 24, 2014 4:31:16 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.apache.ambari.server.api.rest
+  org.apache.ambari.server.api.services
+  org.apache.ambari.eventdb.webservice
+  org.apache.ambari.server.api
+Jun 24, 2014 4:31:16 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.apache.ambari.eventdb.webservice.WorkflowJsonService
+  class org.apache.ambari.server.api.services.BlueprintService
+  class org.apache.ambari.server.api.services.Stacks2Service
+  class org.apache.ambari.server.api.services.HostService
+  class org.apache.ambari.server.api.services.FeedService
+  class org.apache.ambari.server.api.services.UserService
+  class org.apache.ambari.server.api.services.InstanceService
+  class org.apache.ambari.server.api.services.StacksService
+  class org.apache.ambari.server.api.services.ViewService
+  class org.apache.ambari.server.api.services.LogoutService
+  class org.apache.ambari.server.api.rest.HealthCheck
+  class org.apache.ambari.server.api.services.ActionService
+  class org.apache.ambari.server.api.services.KeyService
+  class org.apache.ambari.server.api.services.RootServiceService
+  class org.apache.ambari.server.api.services.PersistKeyValueService
+  class org.apache.ambari.server.api.rest.BootStrapResource
+  class org.apache.ambari.server.api.services.TargetClusterService
+  class org.apache.ambari.server.api.services.ClusterService
+Jun 24, 2014 4:31:16 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Provider classes found:
+  class org.apache.ambari.server.api.GsonJsonProvider
+  class org.apache.ambari.eventdb.webservice.JAXBContextResolver
+Jun 24, 2014 4:31:16 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.11 12/09/2011 10:27 AM'
+Jun 24, 2014 4:31:17 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.apache.ambari.server.proxy
+Jun 24, 2014 4:31:18 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.apache.ambari.server.proxy.ProxyService
+Jun 24, 2014 4:31:18 PM com.sun.jersey.api.core.ScanningResourceConfig init
+INFO: No provider classes found.
+Jun 24, 2014 4:31:18 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.11 12/09/2011 10:27 AM'
+Jun 24, 2014 4:31:18 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.apache.ambari.server.resources.api.rest
+Jun 24, 2014 4:31:18 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.apache.ambari.server.resources.api.rest.GetResource
+Jun 24, 2014 4:31:18 PM com.sun.jersey.api.core.ScanningResourceConfig init
+INFO: No provider classes found.
+Jun 24, 2014 4:31:18 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.11 12/09/2011 10:27 AM'
+Jun 24, 2014 4:31:18 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.apache.ambari.server.agent.rest
+  org.apache.ambari.server.api
+Jun 24, 2014 4:31:18 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.apache.ambari.server.api.services.BlueprintService
+  class org.apache.ambari.server.api.services.Stacks2Service
+  class org.apache.ambari.server.api.services.HostService
+  class org.apache.ambari.server.api.services.FeedService
+  class org.apache.ambari.server.api.services.UserService
+  class org.apache.ambari.server.api.services.InstanceService
+  class org.apache.ambari.server.agent.rest.AgentResource
+  class org.apache.ambari.server.api.services.StacksService
+  class org.apache.ambari.server.api.services.ViewService
+  class org.apache.ambari.server.api.services.LogoutService
+  class org.apache.ambari.server.api.rest.HealthCheck
+  class org.apache.ambari.server.api.services.ActionService
+  class org.apache.ambari.server.api.services.KeyService
+  class org.apache.ambari.server.api.services.RootServiceService
+  class org.apache.ambari.server.api.services.PersistKeyValueService
+  class org.apache.ambari.server.api.rest.BootStrapResource
+  class org.apache.ambari.server.api.services.TargetClusterService
+  class org.apache.ambari.server.api.services.ClusterService
+Jun 24, 2014 4:31:18 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Provider classes found:
+  class org.apache.ambari.server.api.GsonJsonProvider
+Jun 24, 2014 4:31:18 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.11 12/09/2011 10:27 AM'
+Jun 24, 2014 4:31:19 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.apache.ambari.server.security.unsecured.rest
+  org.apache.ambari.server.api
+Jun 24, 2014 4:31:19 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.apache.ambari.server.api.services.BlueprintService
+  class org.apache.ambari.server.api.services.Stacks2Service
+  class org.apache.ambari.server.api.services.HostService
+  class org.apache.ambari.server.api.services.FeedService
+  class org.apache.ambari.server.api.services.UserService
+  class org.apache.ambari.server.security.unsecured.rest.CertificateDownload
+  class org.apache.ambari.server.api.services.InstanceService
+  class org.apache.ambari.server.security.unsecured.rest.CertificateSign
+  class org.apache.ambari.server.api.services.ViewService
+  class org.apache.ambari.server.api.services.StacksService
+  class org.apache.ambari.server.api.services.LogoutService
+  class org.apache.ambari.server.api.rest.HealthCheck
+  class org.apache.ambari.server.api.services.ActionService
+  class org.apache.ambari.server.api.services.KeyService
+  class org.apache.ambari.server.api.services.RootServiceService
+  class org.apache.ambari.server.api.services.PersistKeyValueService
+  class org.apache.ambari.server.api.rest.BootStrapResource
+  class org.apache.ambari.server.api.services.TargetClusterService
+  class org.apache.ambari.server.api.services.ClusterService
+Jun 24, 2014 4:31:19 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Provider classes found:
+  class org.apache.ambari.server.api.GsonJsonProvider
+Jun 24, 2014 4:31:19 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.11 12/09/2011 10:27 AM'

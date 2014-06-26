@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
-import com.zuehlke.sbdfx.dataaccess.impl1.DefaultCitiesDao;
+import com.zuehlke.sbdfx.dataaccess.mongo.MongoCitiesDao;
 import com.zuehlke.sbdfx.domain.City;
 import com.zuehlke.sbdfx.domain.Country;
 import com.zuehlke.sbdfx.domain.FeatureClass;
@@ -35,8 +35,8 @@ public class SourceFileImporter {
 
     private final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
-    private final CitiesDao dao = new DefaultCitiesDao();
-
+    private final CitiesDao dao = new MongoCitiesDao(); 
+ 
     public void importFile(final File srcFile) throws Exception {
         final ZipFile zipFile = new ZipFile(srcFile);
         InputStream inputStream = null;
@@ -97,14 +97,15 @@ public class SourceFileImporter {
         city.setAlternateCountryCodes(parseAlternateCountries(split[pos++]));
         city.setAdmin1Code(split[pos++]);
         city.setAdmin2Code(split[pos++]);
-        city.setAdmin3Code(split[pos++]);
+        city.setAdmin3Code(split[pos++]); 
         city.setAdmin4Code(split[pos++]);
         city.setPopulation(Long.parseLong(split[pos++]));
         city.setElevation(parseInt(split[pos++]));
         city.setDem(split[pos++]);
         city.setTimezone(split[pos++]);
         city.setModificationDate(parseDate(split[pos++]));
-
+        
+        dao.persistCity(city);
     }
 
     private Integer parseInt(final String string) {

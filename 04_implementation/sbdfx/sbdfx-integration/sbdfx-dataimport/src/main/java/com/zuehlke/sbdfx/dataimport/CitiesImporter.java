@@ -14,6 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
+import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
+import com.zuehlke.sbdfx.dataaccess.mongo.MongoCitiesDao;
 import com.zuehlke.sbdfx.utils.CampApplBase;
 
 /**
@@ -34,9 +36,14 @@ public class CitiesImporter extends CampApplBase {
     private static final Option O_IMPORT = OptionBuilder.withLongOpt("import").hasArgs()
             .withDescription("import given files, e.g. CH, DE, cities15000, ...").create("i"); //$NON-NLS-1$
 
+    @SuppressWarnings("static-access")
+    private static final Option O_CLEAR = OptionBuilder.withLongOpt("clear")
+            .withDescription("clears the database before importing").create("c"); //$NON-NLS-1$
+
     {
         OPTIONS.addOption(O_FETCH_SOURCE_FILES);
         OPTIONS.addOption(O_IMPORT);
+        OPTIONS.addOption(O_CLEAR);
     }
 
     public static void main(final String[] args) {
@@ -52,6 +59,10 @@ public class CitiesImporter extends CampApplBase {
 
     @Override
     protected void doPerformActions() throws Exception {
+        if (isOptionPresent(O_CLEAR)) {
+            CitiesDao dao = new MongoCitiesDao();
+            dao.clear();
+        }
         if (isOptionPresent(O_FETCH_SOURCE_FILES)) {
             final SourceFilesFetcher fetcher = new SourceFilesFetcher(TARGET_FOLDER);
             fetcher.fetchAll();

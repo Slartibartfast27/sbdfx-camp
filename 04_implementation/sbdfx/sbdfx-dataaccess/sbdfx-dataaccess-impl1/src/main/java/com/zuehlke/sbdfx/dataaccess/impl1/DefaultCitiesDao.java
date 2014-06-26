@@ -6,12 +6,14 @@
 
 package com.zuehlke.sbdfx.dataaccess.impl1;
 
+import java.util.Collection;
 import java.util.Map;
 
 import javax.ejb.Stateless;
 
 import com.google.common.collect.Maps;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
+import com.zuehlke.sbdfx.dataaccess.api.FindByAreaRequest;
 import com.zuehlke.sbdfx.domain.City;
 import com.zuehlke.sbdfx.domain.Country;
 import com.zuehlke.sbdfx.domain.FeatureClass;
@@ -26,7 +28,8 @@ public class DefaultCitiesDao implements CitiesDao {
 
     private Map<String, FeatureClass> featureClassCache = Maps.newLinkedHashMap(); 
     private Map<String, FeatureCode> featureCodeCache = Maps.newLinkedHashMap(); 
-    private Map<String, Country> countryCache = Maps.newLinkedHashMap(); 
+    private Map<String, Country> countryCache = Maps.newLinkedHashMap();
+    private Map<Integer, City> idToCityMap = Maps.newTreeMap();
     
     @Override
     public City findZuerich() {
@@ -65,6 +68,35 @@ public class DefaultCitiesDao implements CitiesDao {
             countryCache.put(isoCode, result);
         }
         return result;
+    }
+
+    @Override
+    public void persistCity(City city) {
+        idToCityMap.put(city.getGeonameid(), city);
+    }
+
+    @Override
+    public void clear() {
+        idToCityMap.clear();
+    }
+
+    @Override
+    public City findByGeoNameId(int geonameid) {
+        return idToCityMap.get(geonameid);
+    }
+
+    @Override
+    public Collection<City> findByArea(FindByAreaRequest req) {
+        // TODO Auto-generated method stub
+        // return null;
+        throw new RuntimeException("Not implemented.");
+    }
+
+    @Override
+    public void printStatistics() {
+        // TODO Auto-generated method stub
+        // 
+        throw new RuntimeException("Not implemented.");
     }
 
 }

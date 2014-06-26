@@ -1,0 +1,7 @@
+
+description = 'sbdfx-dataaccess-impl-mongo'
+dependencies {
+  compile 'com.google.code.gson:gson:2.2.4'
+  compile 'org.mongodb:mongo-java-driver:2.12.2'
+  compile project(':sbdfx-dataaccess:sbdfx-dataaccess-api')
+}

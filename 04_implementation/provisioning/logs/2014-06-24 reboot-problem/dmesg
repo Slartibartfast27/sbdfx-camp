@@ -1,0 +1,400 @@
+Initializing cgroup subsys cpuset
+Initializing cgroup subsys cpu
+Linux version 2.6.32-431.el6.x86_64 (mockbuild@c6b8.bsys.dev.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Fri Nov 22 03:15:09 UTC 2013
+Command line: ro root=/dev/mapper/VolGroup-lv_root rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD rd_LVM_LV=VolGroup/lv_swap SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=VolGroup/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet
+KERNEL supported cpus:
+  Intel GenuineIntel
+  AMD AuthenticAMD
+  Centaur CentaurHauls
+BIOS-provided physical RAM map:
+ BIOS-e820: 0000000000000000 - 000000000009fc00 (usable)
+ BIOS-e820: 000000000009fc00 - 00000000000a0000 (reserved)
+ BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+ BIOS-e820: 0000000000100000 - 00000000dfff0000 (usable)
+ BIOS-e820: 00000000dfff0000 - 00000000e0000000 (ACPI data)
+ BIOS-e820: 00000000fffc0000 - 0000000100000000 (reserved)
+ BIOS-e820: 0000000100000000 - 0000000120000000 (usable)
+DMI 2.5 present.
+SMBIOS version 2.5 @ 0xFFF60
+DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+e820 update range: 0000000000000000 - 0000000000001000 (usable) ==> (reserved)
+e820 remove range: 00000000000a0000 - 0000000000100000 (usable)
+last_pfn = 0x120000 max_arch_pfn = 0x400000000
+MTRR default type: uncachable
+MTRR variable ranges disabled:
+x86 PAT enabled: cpu 0, old 0x7040600070406, new 0x7010600070106
+CPU MTRRs all blank - virtualized system.
+last_pfn = 0xdfff0 max_arch_pfn = 0x400000000
+initial memory mapped : 0 - 20000000
+init_memory_mapping: 0000000000000000-00000000dfff0000
+ 0000000000 - 00dfe00000 page 2M
+ 00dfe00000 - 00dfff0000 page 4k
+kernel direct mapping tables up to dfff0000 @ 8000-e000
+init_memory_mapping: 0000000100000000-0000000120000000
+ 0100000000 - 0120000000 page 2M
+kernel direct mapping tables up to 120000000 @ c000-12000
+RAMDISK: 3716d000 - 37fefcf1
+ACPI: RSDP 00000000000e0000 00024 (v02 VBOX  )
+ACPI: XSDT 00000000dfff0030 0003C (v01 VBOX   VBOXXSDT 00000001 ASL  00000061)
+ACPI: FACP 00000000dfff00f0 000F4 (v04 VBOX   VBOXFACP 00000001 ASL  00000061)
+ACPI: DSDT 00000000dfff0470 01B96 (v01 VBOX   VBOXBIOS 00000002 INTL 20100528)
+ACPI: FACS 00000000dfff0200 00040
+ACPI: APIC 00000000dfff0240 00054 (v02 VBOX   VBOXAPIC 00000001 ASL  00000061)
+ACPI: SSDT 00000000dfff02a0 001CC (v01 VBOX   VBOXCPUT 00000002 INTL 20100528)
+ACPI: Local APIC address 0xfee00000
+Setting APIC routing to flat.
+No NUMA configuration found
+Faking a node at 0000000000000000-0000000120000000
+Bootmem setup node 0 0000000000000000-0000000120000000
+  NODE_DATA [000000000000d000 - 0000000000040fff]
+  bootmap [0000000000041000 -  0000000000064fff] pages 24
+(8 early reservations) ==> bootmem [0000000000 - 0120000000]
+  #0 [0000000000 - 0000001000]   BIOS data page ==> [0000000000 - 0000001000]
+  #1 [0000006000 - 0000008000]       TRAMPOLINE ==> [0000006000 - 0000008000]
+  #2 [0001000000 - 000201faa4]    TEXT DATA BSS ==> [0001000000 - 000201faa4]
+  #3 [003716d000 - 0037fefcf1]          RAMDISK ==> [003716d000 - 0037fefcf1]
+  #4 [000009fc00 - 0000100000]    BIOS reserved ==> [000009fc00 - 0000100000]
+  #5 [0002020000 - 000202013c]              BRK ==> [0002020000 - 000202013c]
+  #6 [0000008000 - 000000c000]          PGTABLE ==> [0000008000 - 000000c000]
+  #7 [000000c000 - 000000d000]          PGTABLE ==> [000000c000 - 000000d000]
+found SMP MP-table at [ffff88000009fff0] 9fff0
+Reserving 129MB of memory at 48MB for crashkernel (System RAM: 4608MB)
+ [ffffea0000000000-ffffea0003ffffff] PMD -> [ffff880028600000-ffff88002bffffff] on node 0
+Zone PFN ranges:
+  DMA      0x00000001 -> 0x00001000
+  DMA32    0x00001000 -> 0x00100000
+  Normal   0x00100000 -> 0x00120000
+Movable zone start PFN for each node
+early_node_map[3] active PFN ranges
+    0: 0x00000001 -> 0x0000009f
+    0: 0x00000100 -> 0x000dfff0
+    0: 0x00100000 -> 0x00120000
+On node 0 totalpages: 1048462
+  DMA zone: 56 pages used for memmap
+  DMA zone: 104 pages reserved
+  DMA zone: 3838 pages, LIFO batch:0
+  DMA32 zone: 14280 pages used for memmap
+  DMA32 zone: 899112 pages, LIFO batch:31
+  Normal zone: 1792 pages used for memmap
+  Normal zone: 129280 pages, LIFO batch:31
+ACPI: PM-Timer IO Port: 0x4008
+ACPI: Local APIC address 0xfee00000
+Setting APIC routing to flat.
+ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+ACPI: IOAPIC (id[0x01] address[0xfec00000] gsi_base[0])
+IOAPIC[0]: apic_id 1, version 17, address 0xfec00000, GSI 0-23
+ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+ACPI: IRQ0 used by override.
+ACPI: IRQ2 used by override.
+ACPI: IRQ9 used by override.
+Using ACPI (MADT) for SMP configuration information
+SMP: Allowing 1 CPUs, 0 hotplug CPUs
+nr_irqs_gsi: 24
+PM: Registered nosave memory: 000000000009f000 - 00000000000a0000
+PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+PM: Registered nosave memory: 00000000dfff0000 - 00000000e0000000
+PM: Registered nosave memory: 00000000e0000000 - 00000000fffc0000
+PM: Registered nosave memory: 00000000fffc0000 - 0000000100000000
+Allocating PCI resources starting at e0000000 (gap: e0000000:1ffc0000)
+Booting paravirtualized kernel on bare hardware
+NR_CPUS:4096 nr_cpumask_bits:1 nr_cpu_ids:1 nr_node_ids:1
+PERCPU: Embedded 31 pages/cpu @ffff880028200000 s94872 r8192 d23912 u2097152
+pcpu-alloc: s94872 r8192 d23912 u2097152 alloc=1*2097152
+pcpu-alloc: [0] 0 
+Built 1 zonelists in Node order, mobility grouping on.  Total pages: 1032230
+Policy zone: Normal
+Kernel command line: ro root=/dev/mapper/VolGroup-lv_root rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD rd_LVM_LV=VolGroup/lv_swap SYSFONT=latarcyrheb-sun16 crashkernel=129M@0M rd_LVM_LV=VolGroup/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet
+PID hash table entries: 4096 (order: 3, 32768 bytes)
+Checking aperture...
+No AGP bridge found
+PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+Placing 64MB software IO TLB between ffff880020000000 - ffff880024000000
+software IO TLB at phys 0x20000000 - 0x24000000
+Memory: 3904296k/4718592k available (5325k kernel code, 524744k absent, 289552k reserved, 7013k data, 1276k init)
+Hierarchical RCU implementation.
+NR_IRQS:33024 nr_irqs:256
+Console: colour VGA+ 80x25
+console [tty0] enabled
+allocated 16777216 bytes of page_cgroup
+please try 'cgroup_disable=memory' option if you don't want memory cgroups
+Fast TSC calibration using PIT
+Detected 2570.862 MHz processor.
+Calibrating delay loop (skipped), value calculated using timer frequency.. 5141.72 BogoMIPS (lpj=2570862)
+pid_max: default: 32768 minimum: 301
+Security Framework initialized
+SELinux:  Initializing.
+SELinux:  Starting in permissive mode
+Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes)
+Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes)
+Mount-cache hash table entries: 256
+Initializing cgroup subsys ns
+Initializing cgroup subsys cpuacct
+Initializing cgroup subsys memory
+Initializing cgroup subsys devices
+Initializing cgroup subsys freezer
+Initializing cgroup subsys net_cls
+Initializing cgroup subsys blkio
+Initializing cgroup subsys perf_event
+Initializing cgroup subsys net_prio
+mce: CPU supports 0 MCE banks
+using mwait in idle threads.
+SMP alternatives: switching to UP code
+Freeing SMP alternatives: 36k freed
+ACPI: Core revision 20090903
+ftrace: converting mcount calls to 0f 1f 44 00 00
+ftrace: allocating 21769 entries in 86 pages
+APIC routing finalized to flat.
+..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+CPU0: Intel(R) Core(TM) i7-3720QM CPU @ 2.60GHz stepping 09
+Performance Events: unsupported p6 CPU model 58 no PMU driver, software events only.
+NMI watchdog disabled (cpu0): hardware events not enabled
+Brought up 1 CPUs
+Total of 1 processors activated (5141.72 BogoMIPS).
+sizeof(vma)=200 bytes
+sizeof(page)=56 bytes
+sizeof(inode)=592 bytes
+sizeof(dentry)=192 bytes
+sizeof(ext3inode)=800 bytes
+sizeof(buffer_head)=104 bytes
+sizeof(skbuff)=232 bytes
+sizeof(task_struct)=2648 bytes
+devtmpfs: initialized
+regulator: core version 0.5
+NET: Registered protocol family 16
+ACPI: bus type pci registered
+PCI: Using configuration type 1 for base access
+bio: create slab <bio-0> at 0
+ACPI: EC: Look up EC in DSDT
+ACPI: Executed 1 blocks of module-level executable AML code
+ACPI: Interpreter enabled
+ACPI: (supports S0 S5)
+ACPI: Using IOAPIC for interrupt routing
+ACPI: No dock devices found.
+PCI: Ignoring host bridge windows from ACPI; if necessary, use "pci=use_crs" and report a bug
+ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+pci_root PNP0A03:00: host bridge window [io  0x0000-0x0cf7] (ignored)
+pci_root PNP0A03:00: host bridge window [io  0x0d00-0xffff] (ignored)
+pci_root PNP0A03:00: host bridge window [mem 0x000a0000-0x000bffff] (ignored)
+pci_root PNP0A03:00: host bridge window [mem 0xe0000000-0xffdfffff] (ignored)
+PCI: root bus 00: using default resources
+PCI host bridge to bus 0000:00
+pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+pci_bus 0000:00: root bus resource [mem 0x00000000-0xfffffffff]
+pci 0000:00:01.1: reg 20: [io  0xd000-0xd00f]
+pci 0000:00:02.0: reg 10: [mem 0xe0000000-0xe07fffff pref]
+pci 0000:00:03.0: reg 10: [mem 0xf0000000-0xf001ffff]
+pci 0000:00:03.0: reg 18: [io  0xd010-0xd017]
+pci 0000:00:04.0: reg 10: [io  0xd020-0xd03f]
+pci 0000:00:04.0: reg 14: [mem 0xf0400000-0xf07fffff]
+pci 0000:00:04.0: reg 18: [mem 0xf0800000-0xf0803fff pref]
+pci 0000:00:08.0: reg 10: [mem 0xf0820000-0xf083ffff]
+pci 0000:00:08.0: reg 18: [io  0xd040-0xd047]
+ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+ACPI: PCI Interrupt Link [LNKA] (IRQs 5 9 10 11) *0, disabled.
+ACPI: PCI Interrupt Link [LNKB] (IRQs 5 9 10 *11)
+ACPI: PCI Interrupt Link [LNKC] (IRQs 5 9 *10 11)
+ACPI: PCI Interrupt Link [LNKD] (IRQs 5 *9 10 11)
+vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+vgaarb: loaded
+vgaarb: bridge control possible 0000:00:02.0
+SCSI subsystem initialized
+libata version 3.00 loaded.
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+PCI: Using ACPI for IRQ routing
+PCI: old code would have set cacheline size to 32 bytes, but clflush_size = 64
+PCI: pci_cache_line_size set to 64 bytes
+lo: Dropping TSO features since no CSUM feature.
+NetLabel: Initializing
+NetLabel:  domain hash size = 128
+NetLabel:  protocols = UNLABELED CIPSOv4
+NetLabel:  unlabeled traffic allowed by default
+Switching to clocksource jiffies
+pnp: PnP ACPI init
+ACPI: bus type pnp registered
+pnp 00:00: [io  0x0cf8-0x0cff]
+pnp 00:00: Plug and Play ACPI device, IDs PNP0a03 (active)
+pnp 00:01: [io  0x0060]
+pnp 00:01: [io  0x0064]
+pnp 00:01: [irq 1]
+pnp 00:01: Plug and Play ACPI device, IDs PNP0303 (active)
+pnp 00:02: [io  0x0000-0x000f]
+pnp 00:02: [io  0x0080-0x008f]
+pnp 00:02: [io  0x00c0-0x00df]
+pnp 00:02: [dma 4]
+pnp 00:02: Plug and Play ACPI device, IDs PNP0200 (active)
+pnp 00:03: [irq 12]
+pnp 00:03: Plug and Play ACPI device, IDs PNP0f03 (active)
+pnp 00:04: [io  0x0378-0x037f]
+pnp 00:04: [io  0x0778-0x077f]
+pnp 00:04: [irq 7]
+pnp 00:04: Plug and Play ACPI device, IDs PNP0400 (active)
+pnp: PnP ACPI: found 5 devices
+ACPI: ACPI bus type pnp unregistered
+Switching to clocksource acpi_pm
+PCI: max bus depth: 0 pci_try_num: 1
+pci_bus 0000:00: resource 4 [io  0x0000-0xffff]
+pci_bus 0000:00: resource 5 [mem 0x00000000-0xfffffffff]
+NET: Registered protocol family 2
+IP route cache hash table entries: 131072 (order: 8, 1048576 bytes)
+TCP established hash table entries: 524288 (order: 11, 8388608 bytes)
+TCP bind hash table entries: 65536 (order: 8, 1048576 bytes)
+TCP: Hash tables configured (established 524288 bind 65536)
+TCP reno registered
+NET: Registered protocol family 1
+pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+pci 0000:00:01.0: Activating ISA DMA hang workarounds
+pci 0000:00:02.0: Boot video device
+Trying to unpack rootfs image as initramfs...
+Freeing initrd memory: 14859k freed
+platform rtc_cmos: registered platform RTC device (no PNP device found)
+audit: initializing netlink socket (disabled)
+type=2000 audit(1403627068.380:1): initialized
+HugeTLB registered 2 MB page size, pre-allocated 0 pages
+VFS: Disk quotas dquot_6.5.2
+Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+msgmni has been set to 7654
+SELinux:  Registering netfilter hooks
+alg: No test for stdrng (krng)
+ksign: Installing public key data
+Loading keyring
+- Added public key 8A44323FB303E068
+- User ID: CentOS (Kernel Module GPG key)
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+io scheduler noop registered
+io scheduler anticipatory registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+ipmi message handler version 39.2
+IPMI System Interface driver.
+ipmi_si: Adding default-specified kcs state machine
+ipmi_si: Trying default-specified kcs state machine at i/o address 0xca2, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Adding default-specified smic state machine
+ipmi_si: Trying default-specified smic state machine at i/o address 0xca9, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Adding default-specified bt state machine
+ipmi_si: Trying default-specified bt state machine at i/o address 0xe4, slave address 0x0, irq 0
+ipmi_si: Interface detection failed
+ipmi_si: Unable to find any System Interface(s)
+ACPI: AC Adapter [AC] (on-line)
+input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+ACPI: Power Button [PWRF]
+input: Sleep Button as /devices/LNXSYSTM:00/LNXSLPBN:00/input/input1
+ACPI: Sleep Button [SLPF]
+ACPI: acpi_idle registered with cpuidle
+ACPI Exception: AE_NOT_FOUND, No or invalid critical threshold (20090903/thermal-386)
+GHES: HEST is not enabled!
+Non-volatile memory driver v1.3
+Linux agpgart interface v0.103
+crash memory driver: version 1.1
+Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+brd: module loaded
+loop: module loaded
+input: Macintosh mouse button emulation as /devices/virtual/input/input2
+Fixed MDIO Bus: probed
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+uhci_hcd: USB Universal Host Controller Interface driver
+PNP: PS/2 Controller [PNP0303:PS2K,PNP0f03:PS2M] at 0x60,0x64 irq 1,12
+serio: i8042 KBD port at 0x60,0x64 irq 1
+serio: i8042 AUX port at 0x60,0x64 irq 12
+ACPI: Battery Slot [BAT0] (battery present)
+mice: PS/2 mouse device common for all mice
+input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input3
+rtc_cmos rtc_cmos: rtc core: registered rtc_cmos as rtc0
+rtc0: alarms up to one day, 114 bytes nvram
+cpuidle: using governor ladder
+cpuidle: using governor menu
+EFI Variables Facility v0.08 2004-May-17
+usbcore: registered new interface driver hiddev
+usbcore: registered new interface driver usbhid
+usbhid: v2.6:USB HID core driver
+GRE over IPv4 demultiplexor driver
+TCP cubic registered
+Initializing XFRM netlink socket
+NET: Registered protocol family 17
+registered taskstats version 1
+rtc_cmos rtc_cmos: setting system clock to 2014-06-24 16:24:29 UTC (1403627069)
+Initalizing network drop monitor service
+Freeing unused kernel memory: 1276k freed
+Write protecting the kernel read-only data: 10240k
+Freeing unused kernel memory: 800k freed
+Freeing unused kernel memory: 1588k freed
+input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input4
+dracut: dracut-004-335.el6
+dracut: rd_NO_LUKS: removing cryptoluks activation
+device-mapper: uevent: version 1.0.3
+device-mapper: ioctl: 4.24.6-ioctl (2013-01-15) initialised: dm-devel@redhat.com
+udev: starting version 147
+dracut: Starting plymouth daemon
+dracut: rd_NO_MD: removing MD RAID activation
+ata_piix 0000:00:01.1: version 2.13
+ata_piix 0000:00:01.1: setting latency timer to 64
+scsi0 : ata_piix
+scsi1 : ata_piix
+ata1: PATA max UDMA/33 cmd 0x1f0 ctl 0x3f6 bmdma 0xd000 irq 14
+ata2: PATA max UDMA/33 cmd 0x170 ctl 0x376 bmdma 0xd008 irq 15
+ata1.01: NODEV after polling detection
+ata1.00: ATA-6: VBOX HARDDISK, 1.0, max UDMA/133
+ata1.00: 419430400 sectors, multi 128: LBA48 
+ata1.00: configured for UDMA/33
+scsi 0:0:0:0: Direct-Access     ATA      VBOX HARDDISK    1.0  PQ: 0 ANSI: 5
+sd 0:0:0:0: [sda] 419430400 512-byte logical blocks: (214 GB/200 GiB)
+sd 0:0:0:0: [sda] Write Protect is off
+sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+ sda: sda1 sda2
+sd 0:0:0:0: [sda] Attached SCSI disk
+dracut: Scanning devices sda2  for LVM logical volumes VolGroup/lv_swap VolGroup/lv_root 
+dracut: inactive '/dev/VolGroup/lv_root' [195.51 GiB] inherit
+dracut: inactive '/dev/VolGroup/lv_swap' [4.00 GiB] inherit
+EXT4-fs (dm-0): mounted filesystem with ordered data mode. Opts: 
+dracut: Mounted root filesystem /dev/mapper/VolGroup-lv_root
+SELinux:  Disabled at runtime.
+SELinux:  Unregistering netfilter hooks
+type=1404 audit(1403627070.216:2): selinux=0 auid=4294967295 ses=4294967295
+dracut: 
+dracut: Switching root
+udev: starting version 147
+sd 0:0:0:0: Attached scsi generic sg0 type 0
+Refined TSC clocksource calibration: 2570.131 MHz.
+Switching to clocksource tsc
+[drm] Initialized drm 1.1.0 20060810
+  alloc irq_desc for 18 on node -1
+  alloc kstat_irqs on node -1
+pci 0000:00:02.0: PCI INT A -> GSI 18 (level, low) -> IRQ 18
+[drm] Supports vblank timestamp caching Rev 1 (10.10.2010).
+[drm] No driver support for vblank timestamp query.
+[drm] Initialized vboxvideo 1.0.0 20090303 for 0000:00:02.0 on minor 0
+e1000: Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+e1000: Copyright (c) 1999-2006 Intel Corporation.
+  alloc irq_desc for 19 on node -1
+  alloc kstat_irqs on node -1
+e1000 0000:00:03.0: PCI INT A -> GSI 19 (level, low) -> IRQ 19
+e1000 0000:00:03.0: setting latency timer to 64
+e1000 0000:00:03.0: eth0: (PCI:33MHz:32-bit) 08:00:27:15:d5:19
+e1000 0000:00:03.0: eth0: Intel(R) PRO/1000 Network Connection
+  alloc irq_desc for 16 on node -1
+  alloc kstat_irqs on node -1
+e1000 0000:00:08.0: PCI INT A -> GSI 16 (level, low) -> IRQ 16
+e1000 0000:00:08.0: setting latency timer to 64
+e1000 0000:00:08.0: eth1: (PCI:33MHz:32-bit) 08:00:27:19:df:24
+e1000 0000:00:08.0: eth1: Intel(R) PRO/1000 Network Connection
+  alloc irq_desc for 20 on node -1
+  alloc kstat_irqs on node -1
+vboxguest 0000:00:04.0: PCI INT A -> GSI 20 (level, low) -> IRQ 20
+input: Unspecified device as /devices/pci0000:00/0000:00:04.0/input/input5
+vboxguest: major 0, IRQ 20, I/O port d020, MMIO at 00000000f0400000 (size 0x400000)
+vboxguest: Successfully loaded version 4.3.10 (interface 0x00010004)
+piix4_smbus 0000:00:07.0: SMBus base address uninitialized - upgrade BIOS or use force_addr=0xaddr
+parport_pc 00:04: reported by Plug and Play ACPI
+ppdev: user-space parallel port driver
+EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: 
+Adding 4194296k swap on /dev/mapper/VolGroup-lv_swap.  Priority:-1 extents:1 across:4194296k 
