@@ -36,7 +36,7 @@ public interface CitiesDao {
 
     City findByGeoNameId(int geonameid);
 
-    Collection<City> findByArea( FindByAreaRequest req);
+    ListResult<City> findByArea( FindByAreaRequest req);
 
     void printStatistics();
     

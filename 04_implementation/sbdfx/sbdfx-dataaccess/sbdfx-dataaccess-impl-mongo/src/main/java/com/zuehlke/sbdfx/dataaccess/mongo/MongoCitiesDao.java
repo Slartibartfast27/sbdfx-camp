@@ -27,6 +27,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.util.JSON;
 import com.zuehlke.sbdfx.dataaccess.api.BoundingBox;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
+import com.zuehlke.sbdfx.dataaccess.api.ListResult;
 import com.zuehlke.sbdfx.dataaccess.api.FindByAreaRequest;
 import com.zuehlke.sbdfx.domain.City;
 import com.zuehlke.sbdfx.domain.Country;
@@ -139,7 +140,7 @@ public class MongoCitiesDao implements CitiesDao {
     }
 
     @Override
-    public Collection<City> findByArea(final FindByAreaRequest req) {
+    public ListResult<City> findByArea(final FindByAreaRequest req) {
         
         final MongoQueryBuilder b = new MongoQueryBuilder();
         
@@ -147,7 +148,7 @@ public class MongoCitiesDao implements CitiesDao {
         b.numberBetween(req.getLongitudeMin(), "longitude", req.getLongitudeMax());
         
         final DBCursor cursor = cities.find(b.create()).limit(req.getMaxResults());
-        final Collection<City> result = Lists.newArrayList();
+        final ListResult<City> result = ListResult.create( cursor.count() );
         for (final DBObject dbObject : cursor) {
             result.add(toCity(dbObject));
         }

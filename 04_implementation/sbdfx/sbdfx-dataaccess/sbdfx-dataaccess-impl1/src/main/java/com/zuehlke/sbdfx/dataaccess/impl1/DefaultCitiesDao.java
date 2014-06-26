@@ -12,8 +12,10 @@ import java.util.Map;
 import javax.ejb.Stateless;
 
 import com.google.common.collect.Maps;
+import com.zuehlke.sbdfx.dataaccess.api.BoundingBox;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
 import com.zuehlke.sbdfx.dataaccess.api.FindByAreaRequest;
+import com.zuehlke.sbdfx.dataaccess.api.ListResult;
 import com.zuehlke.sbdfx.domain.City;
 import com.zuehlke.sbdfx.domain.Country;
 import com.zuehlke.sbdfx.domain.FeatureClass;
@@ -86,16 +88,23 @@ public class DefaultCitiesDao implements CitiesDao {
     }
 
     @Override
-    public Collection<City> findByArea(FindByAreaRequest req) {
+    public void printStatistics() {
+        // TODO Auto-generated method stub
+        // 
+        throw new RuntimeException("Not implemented.");
+    }
+
+    @Override
+    public BoundingBox getGlobalBoundingBox() {
         // TODO Auto-generated method stub
         // return null;
         throw new RuntimeException("Not implemented.");
     }
 
     @Override
-    public void printStatistics() {
+    public ListResult<City> findByArea(FindByAreaRequest req) {
         // TODO Auto-generated method stub
-        // 
+        // return null;
         throw new RuntimeException("Not implemented.");
     }
 

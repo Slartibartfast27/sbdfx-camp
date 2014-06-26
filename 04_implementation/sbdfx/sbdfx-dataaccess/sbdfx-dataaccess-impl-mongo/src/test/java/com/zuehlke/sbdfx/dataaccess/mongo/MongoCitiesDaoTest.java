@@ -2,13 +2,12 @@ package com.zuehlke.sbdfx.dataaccess.mongo;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Collection;
-
 import org.junit.Test;
 
 import com.zuehlke.sbdfx.dataaccess.api.BoundingBox;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
 import com.zuehlke.sbdfx.dataaccess.api.FindByAreaRequest;
+import com.zuehlke.sbdfx.dataaccess.api.ListResult;
 import com.zuehlke.sbdfx.domain.City;
 
 public class MongoCitiesDaoTest {
@@ -51,15 +50,17 @@ public class MongoCitiesDaoTest {
 
         testFindByArea(req, 100);
         req.setMaxResults(50);
-        testFindByArea(req, 50);
+        ListResult<City> result = testFindByArea(req, 50);
+        assertEquals(100, result.getTotalCount());
 
         req.setLatitudeMin(5.0);
         req.setLatitudeMax(5.0);
         testFindByArea(req, 0);
 
         req.setLatitudeMax(6.0);
-        testFindByArea(req, 10);
-
+        result = testFindByArea(req, 10);
+        assertEquals(10, result.getTotalCount());
+        
         req.setLatitudeMin(5.0);
         req.setLatitudeMax(7.0);
         req.setLongitudeMin(22.0);
@@ -83,9 +84,10 @@ public class MongoCitiesDaoTest {
         }
     }
 
-    private void testFindByArea(final FindByAreaRequest req, final int expectedNumberOfResults) {
-        final Collection<City> found = dao.findByArea(req);
-        assertEquals(expectedNumberOfResults, found.size());
+    private ListResult<City> testFindByArea(final FindByAreaRequest req, final int expectedNumberOfResults) {
+        final ListResult<City> found = dao.findByArea(req);
+        assertEquals(expectedNumberOfResults, found.getFetchedCount());
+        return found;
     }
 
     @Test
