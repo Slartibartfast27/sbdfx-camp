@@ -1,44 +1,42 @@
 package com.zuehlke.sbdfx.dataaccess.mongo;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
 
 public class MongoQueryBuilder {
 
-    private final JsonObject rootElement = new JsonObject();
-    private final JsonElement currentElement = rootElement;
+    private static final String LESS_THAN = "$lt";
+    private static final String GREATER_THAN_OR_EQUAL = "$gte";
+
+    private final BasicDBObject rootElement = new BasicDBObject();
+    private final BasicDBObject currentElement = rootElement;
 
     public DBObject create() {
-        final Gson gson = new Gson();
-        final String json = gson.toJson(rootElement);
-        return (DBObject) JSON.parse(json);
+        return rootElement;
     }
 
     public void numberBetween(final Number from, final String attributeName, final Number to) {
-        final JsonObject critera = createBetween(from, to);
+        final BasicDBObject critera = createBetween(from, to);
         addCriteria(attributeName, critera);
     }
 
-    private void addCriteria(final String attributeName, final JsonObject critera) {
+    private void addCriteria(final String attributeName, final BasicDBObject critera) {
         if (critera == null) {
             return;
         }
-        ((JsonObject) currentElement).add(attributeName, critera);
+        currentElement.put(attributeName, critera);
     }
 
-    private JsonObject createBetween(final Number from, final Number to) {
+    private BasicDBObject createBetween(final Number from, final Number to) {
         if (from == null && to == null) {
             return null;
         }
-        final JsonObject result = new JsonObject();
+        final BasicDBObject result = new BasicDBObject();
         if (from != null) {
-            result.addProperty("$gte", from);
+            result.put(GREATER_THAN_OR_EQUAL, from);
         }
         if (to != null) {
-            result.addProperty("$lt", to);
+            result.put(LESS_THAN, to);
         }
         return result;
     }
