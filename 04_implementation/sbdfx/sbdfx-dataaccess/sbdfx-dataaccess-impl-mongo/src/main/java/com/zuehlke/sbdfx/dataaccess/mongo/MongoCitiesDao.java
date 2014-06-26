@@ -146,7 +146,7 @@ public class MongoCitiesDao implements CitiesDao {
         b.numberBetween(req.getLatitudeMin(), "latitude", req.getLatitudeMax());
         b.numberBetween(req.getLongitudeMin(), "longitude", req.getLongitudeMax());
         
-        final DBCursor cursor = cities.find(b.create());
+        final DBCursor cursor = cities.find(b.create()).limit(req.getMaxResults());
         final Collection<City> result = Lists.newArrayList();
         for (final DBObject dbObject : cursor) {
             result.add(toCity(dbObject));

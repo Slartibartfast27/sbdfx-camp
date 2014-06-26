@@ -50,6 +50,8 @@ public class MongoCitiesDaoTest {
         final FindByAreaRequest req = new FindByAreaRequest();
 
         testFindByArea(req, 100);
+        req.setMaxResults(50);
+        testFindByArea(req, 50);
 
         req.setLatitudeMin(5.0);
         req.setLatitudeMax(5.0);
