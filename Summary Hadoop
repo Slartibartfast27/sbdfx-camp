@@ -1,0 +1,45 @@
+Link: https://blog.codecentric.de/2013/08/einfuhrung-in-hadoop-die-wichtigsten-komponenten-von-hadoop-teil-3-von-5/
+
+
+
+Overview:
+Hadoop is an open source project which allows the processing og huge data sets across clusters of commoditiy servers.
+New Paradigm: Moving data to processors is not efficient when talking about petabytes. The new paradigm moves processing towards data. 
+--> Data transport over the network is more expensive than distributed program execution! 
+
+MapReduce:
+Divide and Concurs approach.
+Map-Phase: An algorithm executed locally analysis the data and creates key-value pairs (e.g. a text is analyzed and each word is put into an key-value store). The mapper transforms the data into intermediate values which are also key-value pairs.
+Sort and Shuffle: Partial results to be distributed to Reducer 
+Reduce: Finalize computing and write results to file
+Combine: Combine final results into one file (e.g. cat)
+
+HDFS:
+Java-bsiertes Filesystem, dass zuverlässige, persistente Speicherung sowie schneelen Zugriff auf grossen Datenvolumina erlaubt.
+Modifizieren von Dateien ist möglich, jedoch ineffizient.
+
+YARN: (yet anathor rsource negotiator)
+MR is now not the only way of data processing. MR is now just an application within YARN.
+
+Application:
+
+	* storage of historical sensor data (e.g. meter data), weather data and school holidays
+	* Is there a relation between all those data?
+	* Assign locally n-tuple to key
+	* etc.
+	* HDFS is designed to cater for streaming data
+
+Why no ESB:
+The copying of data lies at the route of many problems. By supplying a single real-time view that all systems can interface with we remove the need for reconciliation and promote the concept of truly shared services.
+
+My Key Questions:
+Would we recommend Hadoop for a file sharing service - no further processing required (Erkennung von urheberechtlich geschützten Material .. z.B. such vone Hashcodes).
+What is with Video streaming - no further processing required? Is streaming posible? Probably just bandwith problem. There might be better platforms for videostreaming (infosphere, yahoo S4,...)
+Would we recommend Hadoop for a blog provider - search processing? Would SOLR (text index solution) make more sense?
+Would it make sense having a RDBMS on top of HDFS?
+What data should we store in Hadoop?
+Would we recommend HDFS for legal archives?
+Do we recommend Hadoop for storing measured values ... how would we do this? - HBase, Mongo
+Do SANs, NAS, RAID-arrays make sense in Hadoop clusters? - Probably not.
+What is with semi-structured data such as logfiles, XML files?
+What types of data processing should be done on Hadoop
