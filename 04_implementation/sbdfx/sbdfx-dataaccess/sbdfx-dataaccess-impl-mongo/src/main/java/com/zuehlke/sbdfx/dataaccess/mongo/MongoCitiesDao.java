@@ -15,14 +15,17 @@ import javax.ejb.Stateless;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.CommandResult;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.GroupCommand;
 import com.mongodb.MongoClient;
 import com.mongodb.util.JSON;
+import com.zuehlke.sbdfx.dataaccess.api.BoundingBox;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
 import com.zuehlke.sbdfx.dataaccess.api.FindByAreaRequest;
 import com.zuehlke.sbdfx.domain.City;
@@ -155,6 +158,36 @@ public class MongoCitiesDao implements CitiesDao {
     public void printStatistics() {
         final CommandResult stats = db.getStats();
         System.out.println(stats);
+    }
+
+    @Override
+    public BoundingBox getGlobalBoundingBox() {
+        DBObject keys = null;
+        DBObject condition = null;
+        DBObject initial = new BasicDBObject();
+        initial.put("maxLongitude", Double.MIN_VALUE);
+        initial.put("maxLatitude", Double.MIN_VALUE);
+        initial.put("minLongitude", Double.MAX_VALUE);
+        initial.put("minLatitude", Double.MAX_VALUE);
+        
+        String reduce = "function(obj,prev) { "
+                + "if ( prev.maxLongitude < obj.longitude ) prev.maxLongitude = obj.longitude; "
+                + "if ( prev.minLongitude > obj.longitude ) prev.minLongitude = obj.longitude; "
+                + "if ( prev.maxLatitude < obj.latitude ) prev.maxLatitude = obj.latitude; "
+                + "if ( prev.minLatitude > obj.latitude ) prev.minLatitude = obj.latitude; "
+                + "}";
+        String finalize = null;
+        
+        GroupCommand cmd = new GroupCommand(cities, keys, condition, initial, reduce, finalize);
+        DBObject resultObjectList = cities.group(cmd);
+        
+        BoundingBox result = new BoundingBox();
+        DBObject resultObject = (DBObject) resultObjectList.get("0");
+        result.setLongitudeMax( (double) resultObject.get("maxLongitude"));
+        result.setLongitudeMin( (double) resultObject.get("minLongitude"));
+        result.setLatitudeMax( (double) resultObject.get("maxLatitude"));
+        result.setLatitudeMin( (double) resultObject.get("minLatitude"));
+        return result;
     }
 
 }

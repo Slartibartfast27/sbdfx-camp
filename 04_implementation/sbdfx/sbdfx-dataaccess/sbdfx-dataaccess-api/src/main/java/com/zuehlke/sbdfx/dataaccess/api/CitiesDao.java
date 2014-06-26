@@ -8,12 +8,12 @@ package com.zuehlke.sbdfx.dataaccess.api;
 
 import java.util.Collection;
 
+import javax.ejb.Local;
+
 import com.zuehlke.sbdfx.domain.City;
 import com.zuehlke.sbdfx.domain.Country;
 import com.zuehlke.sbdfx.domain.FeatureClass;
 import com.zuehlke.sbdfx.domain.FeatureCode;
-
-import javax.ejb.Local;
 
 /**
  *
@@ -39,4 +39,6 @@ public interface CitiesDao {
     Collection<City> findByArea( FindByAreaRequest req);
 
     void printStatistics();
+    
+    BoundingBox getGlobalBoundingBox();
 }

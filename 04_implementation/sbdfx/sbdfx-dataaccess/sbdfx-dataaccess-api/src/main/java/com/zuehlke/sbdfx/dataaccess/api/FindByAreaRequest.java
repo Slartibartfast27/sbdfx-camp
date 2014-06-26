@@ -2,40 +2,40 @@ package com.zuehlke.sbdfx.dataaccess.api;
 
 public class FindByAreaRequest extends BaseRequest {
 
-    private Integer longitudeMin;
-    private Integer longitudeMax;
-    private Integer latitudeMin;
-    private Integer latitudeMax;
+    private Double longitudeMin;
+    private Double longitudeMax;
+    private Double latitudeMin;
+    private Double latitudeMax;
 
-    public Integer getLongitudeMin() {
+    public Double getLongitudeMin() {
         return longitudeMin;
     }
 
-    public void setLongitudeMin(final Integer longitudeMin) {
+    public void setLongitudeMin(final Double longitudeMin) {
         this.longitudeMin = longitudeMin;
     }
 
-    public Integer getLongitudeMax() {
+    public Double getLongitudeMax() {
         return longitudeMax;
     }
 
-    public void setLongitudeMax(final Integer longitudeMax) {
+    public void setLongitudeMax(final Double longitudeMax) {
         this.longitudeMax = longitudeMax;
     }
 
-    public Integer getLatitudeMin() {
+    public Double getLatitudeMin() {
         return latitudeMin;
     }
 
-    public void setLatitudeMin(final Integer latitudeMin) {
+    public void setLatitudeMin(final Double latitudeMin) {
         this.latitudeMin = latitudeMin;
     }
 
-    public Integer getLatitudeMax() {
+    public Double getLatitudeMax() {
         return latitudeMax;
     }
 
-    public void setLatitudeMax(final Integer latitudeMax) {
+    public void setLatitudeMax(final Double latitudeMax) {
         this.latitudeMax = latitudeMax;
     }
 

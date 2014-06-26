@@ -6,12 +6,14 @@ import java.util.Collection;
 
 import org.junit.Test;
 
+import com.zuehlke.sbdfx.dataaccess.api.BoundingBox;
 import com.zuehlke.sbdfx.dataaccess.api.CitiesDao;
 import com.zuehlke.sbdfx.dataaccess.api.FindByAreaRequest;
 import com.zuehlke.sbdfx.domain.City;
 
 public class MongoCitiesDaoTest {
 
+    private static final double DEFAULT_PRECISION = 1e-10;
     private final CitiesDao dao = new MongoCitiesDao();
 
     @Test
@@ -43,46 +45,60 @@ public class MongoCitiesDaoTest {
     @Test
     public void testFindByArea() {
         dao.clear();
+        createSampleCitites();
 
+        final FindByAreaRequest req = new FindByAreaRequest();
+
+        testFindByArea(req, 100);
+
+        req.setLatitudeMin(5.0);
+        req.setLatitudeMax(5.0);
+        testFindByArea(req, 0);
+
+        req.setLatitudeMax(6.0);
+        testFindByArea(req, 10);
+
+        req.setLatitudeMin(5.0);
+        req.setLatitudeMax(7.0);
+        req.setLongitudeMin(22.0);
+        req.setLongitudeMax(25.0);
+        testFindByArea(req, 6);
+
+        req.setLongitudeMax(22.0);
+        testFindByArea(req, 0);
+
+    }
+
+    private void createSampleCitites() {
         for (int latitude = 0; latitude < 10; latitude++) {
             for (int longitude = 20; longitude < 30; longitude++) {
                 final int geonameid = latitude + 1000 * longitude;
-                City city = createCity(geonameid);
+                final City city = createCity(geonameid);
                 city.setLatitude(latitude);
                 city.setLongitude(longitude);
                 dao.persistCity(city);
             }
         }
-        
-        FindByAreaRequest req = new FindByAreaRequest();
-        
-        testFindByArea(req, 100);
-        
-        req.setLatitudeMin(5);
-        req.setLatitudeMax(5);
-        testFindByArea(req, 0);
-
-        req.setLatitudeMax(6);
-        testFindByArea(req, 10);
-        
-        req.setLatitudeMin(5);
-        req.setLatitudeMax(7);
-        req.setLongitudeMin(22);
-        req.setLongitudeMax(25);
-        testFindByArea(req, 6);
-
-        req.setLongitudeMax(22);
-        testFindByArea(req, 0);
-
     }
 
-    private void testFindByArea(FindByAreaRequest req, int expectedNumberOfResults) {
-        Collection<City> found = dao.findByArea( req );
+    private void testFindByArea(final FindByAreaRequest req, final int expectedNumberOfResults) {
+        final Collection<City> found = dao.findByArea(req);
         assertEquals(expectedNumberOfResults, found.size());
     }
 
     @Test
     public void printDbStatistics() {
         dao.printStatistics();
+    }
+
+    @Test
+    public void testGlobalBoundingBox() {
+        dao.clear();
+        createSampleCitites();
+        final BoundingBox globalBoundingBox = dao.getGlobalBoundingBox();
+        assertEquals(20, globalBoundingBox.getLongitudeMin(), DEFAULT_PRECISION);
+        assertEquals(29, globalBoundingBox.getLongitudeMax(), DEFAULT_PRECISION);
+        assertEquals(0, globalBoundingBox.getLatitudeMin(), DEFAULT_PRECISION);
+        assertEquals(9, globalBoundingBox.getLatitudeMax(), DEFAULT_PRECISION);
     }
 }
