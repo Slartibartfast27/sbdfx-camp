@@ -163,6 +163,9 @@ public class MongoCitiesDao implements CitiesDao {
 
     @Override
     public BoundingBox getGlobalBoundingBox() {
+        
+        // example taken from: http://stackoverflow.com/questions/4762980/getting-the-highest-value-of-a-column-in-mongodb
+        
         DBObject keys = null;
         DBObject condition = null;
         DBObject initial = new BasicDBObject();
